@@ -11,5 +11,10 @@ class db_login extends Database {
       $reult = $this->excute($sql);
       return $reult;
    }
+   public function get_login($email,$password){
+      $sql = "SELECT * FROM taikhoan WHERE email = '$email' AND user_password ='$password'";
+      $result = $this->queryOne_assoc($sql);
+      return $result;
+   }
 }
 ?>

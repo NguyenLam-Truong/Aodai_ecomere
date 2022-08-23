@@ -31,6 +31,11 @@ class Database {
         $result = $data->fetch();
         return $result;
     }
+    public function queryOne_assoc($sql){
+        $data = $this->conn->query($sql);
+        $result = $data->fetchAll();
+        return $result;
+    }
     // thêm , xóa , sửa dữ liệu database
     public function excute($sql){
         $result = $this->conn->exec($sql);

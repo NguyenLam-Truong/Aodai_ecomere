@@ -22,6 +22,7 @@
     <script src="../../public/js/radio.js"></script>
     <script src="../../public/js/selectBox.js"></script>
     <script src="../../public/js/jquery.jqzoom-core.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -150,24 +151,27 @@
                         </li>
                         <li><a href="/catalog_grid.html">Electric</a></li>
                         <li><a href="/catalog_grid.html">For cars</a></li>
-                        <li class="parent">
-                            <a href="#">QUẢN TRỊ</a>
-                            <ul class="sub">
-                                <li><a href="?act=redirect_admin">VÀO ADMIN</a></li>
-                            </ul>
-                        </li>
-                        <!-- <?php
-                        // nếu như có tồn tại user mang giá trị bằng 1 thi mới hiện admin
-                        // if(isset($_SESSION['user'])){
-                        //     if($_SESSION['user']==1){
-                        //         echo ' 
-                        //         <li class="parent">
-                        //           <a href="?act=redirect_admin">ADMIN</a>
-                        // //         </li>';
-                        //     }
-                        // }
-                        
-                        ?> -->
+                        <?php
+                        if(!empty($_SESSION['role'])){
+                            if($_SESSION['role']==1){
+                                echo '
+                                <li class="parent">
+                                    <a href="#">QUẢN TRỊ</a>
+                                    <ul class="sub">
+                                        <li>
+                                            <a href="?act=redirect_admin">
+                                               VÀO QUẢN TRỊ
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            ';
+                            }
+                        }
+                        if(!empty($_SESSION['username'])){
+                            echo '<li><a href="login_site.php?act=logout">Đăng Xuất</a></li>';
+                        }
+                        ?>
                     </ul>
                 </nav><!-- .primary -->
             </div><!-- .grid_12 -->
