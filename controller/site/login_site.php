@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once '../../model/site/login/model_site_login.php';
 class Login {
    public $db_login;
@@ -12,6 +13,12 @@ class Login {
         case 'index':
             $this->index();
             break;
+        case 'login':
+          $this->login();
+          break;
+        case 'logout':
+          $this->logout();
+          break;
         case 'register':
             $this->register();
             break;
@@ -28,6 +35,36 @@ class Login {
    
    public function index(){
      require_once '../../view/site/login_register/login_site_view.php';
+   }
+   // xử lí đăng nhập của khách hàng
+   public function login() {
+     if(isset($_POST['login'])==true){
+        // lấy hai giá trị email và password
+        $email = htmlspecialchars(trim($_POST['email_login']));
+        $password = htmlspecialchars(trim($_POST['password_login']));
+        if(!empty($email) && !empty($password)){
+          $data = $this->db_login->get_login($email,$password);
+          if(($data)==true) {
+            foreach ($data as $row ) {
+              $_SESSION['username'] = $row['username'];
+              $_SESSION['password'] = $row['user_password'];
+              $_SESSION['hovaten'] = $row['hovaten'];
+              $_SESSION['avatar'] = $row['avatar'];
+              $_SESSION['role'] = $row['user_role'];
+              $_SESSION['id'] = $row['id_kh'];
+              $_SESSION['email'] = $row['email'];
+              $_SESSION['diachi'] = $row['diachi'];
+            }
+            echo "<script>alert('Đã đăng nhập thành công !')</script>";
+            $page = $_SERVER['PHP_SELF'];
+            header("Refresh:0; url=$page");
+          }
+          else{
+            $erro = "<script>swal('Email và Mật khẩu Sai !');</script>";
+            require_once ('../../view/site/login_register/login_site_view.php');
+          }
+        }
+     }
    }
    public function register(){
      require_once '../../view/site/login_register/register_site_view.php';
@@ -65,6 +102,18 @@ class Login {
    public function header_login(){
       header('Location: ../admin/index.php');
    }
+   public function logout() {
+    unset($_SESSION['username']);
+    unset($_SESSION['password']);
+    unset($_SESSION['hovaten']);
+    unset($_SESSION['avatar']);
+    unset($_SESSION['role']);
+    unset($_SESSION['id']);
+    unset($_SESSION['email']);
+    unset($_SESSION['diachi']);
+    //
+    $page = $_SERVER['PHP_SELF'];
+    header("Refresh:0; url=$page");
+   }
 }
 $controller = new Login();
-?>

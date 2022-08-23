@@ -14,19 +14,25 @@
             </div><!-- .grid_6 -->
 		
 		<div class="grid_6">
-			<form class="registed">
+			<?php
+			if(isset($erro)) {
+				echo $erro;
+			}
+			
+			?>
+			<form class="registed" method="post" action="?act=login">
 				<h2>Registed Customers</h2>
 							
 				<p>If you have an account with us, please log in.</p>
 							
 				<div class="email">
 					<strong>Email Adress:</strong><sup class="surely">*</sup><br/>
-					<input type="email" name="" class="" value="" />
+					<input type="email" name="email_login" class="" value="" />
 				</div><!-- .email -->
 							
 				<div class="password">
 					<strong>Password:</strong><sup class="surely">*</sup><br/>
-					<input type="text" name="" class="" value="" />
+					<input type="text" name="password_login" class="" value="" />
 					<a class="forgot" href="#">Forgot Your Password?</a>
 				</div><!-- .password -->
 				
@@ -36,7 +42,7 @@
 				</div><!-- .remember -->
 				
 				<div class="submit">										
-					<input type="submit" value="Login" />
+					<input type="submit" name="login" value="Login" />
 					<sup class="surely">*</sup><span>Required Field</span>
 				</div><!-- .submit -->
 			</form><!-- .registed -->
