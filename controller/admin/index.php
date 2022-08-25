@@ -1,5 +1,5 @@
 <?php
-  define('ARR_ADMIN',['home','sanpham','maloai','taikhoan','cart','binhluan']);
+  define('ARR_ADMIN',['home','sanpham','maloai','taikhoan','cart','binhluan','action_maloai']);
   $ctrl='home';
   if(isset($_GET['ctrl'])==true) {
     $ctrl = $_GET['ctrl'];

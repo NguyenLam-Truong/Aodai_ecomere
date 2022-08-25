@@ -376,7 +376,7 @@
                             <td class="text-center">
                                 <div class="btn-group">
                                     <a href="javascript:void(0)" data-toggle="tooltip" title="Details" class="btn btn-xs btn-info"><i class="fa fa-info-circle"></i></a>
-                                    <a href="javascript:void(0)" data-toggle="tooltip" title="Edit" class="btn btn-xs btn-success"><i class="fa fa-pencil"></i></a>
+                                    <a href="action_maloai_admin.php?act=edit&idmaloai=<?=$row['idmaloai']?>" data-toggle="tooltip" title="Edit" class="btn btn-xs btn-success"><i class="fa fa-pencil"></i></a>
                                     <a href="javascript:void(0)" data-toggle="tooltip" title="Delete" class="btn btn-xs btn-danger"><i class="fa fa-times"></i></a>
                                 </div>
                             </td>
