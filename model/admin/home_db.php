@@ -21,5 +21,17 @@ class db_admin extends  Database{
       $result= $this->queryOne($sql);
       return $result;
    }
+   public function edit_maloai($idmaloai) {
+      $sql = "SELECT * FROM loai_san_pham WHERE idmaloai='$idmaloai'";
+      $result = $this->query($sql);
+      return $result;
+   }
+   public function update_maloai($id,$name,$date,$id_old) {
+      $sql = "UPDATE loai_san_pham SET idmaloai = '$id' , tenLoai = '$name' , ngaynhap = '$date' WHERE 
+        idmaloai = '$id_old'
+      ";
+      $result = $this->excute($sql);
+      return $result;
+   }
 }
 ?>

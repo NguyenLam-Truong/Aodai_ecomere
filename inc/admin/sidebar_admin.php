@@ -4,7 +4,7 @@
             <a href="#"><i class="fa fa-th-list"></i>MÃ LOẠI SẢN PHẨM</a>
             <ul>
                 <li>
-                    <a href="?act=maloai">MÃ LOẠI</a>
+                    <a href="home_admin.php?act=maloai">MÃ LOẠI</a>
                 </li>
                 <li>
                     <a href="#">THÊM MÃ LOẠI</a>
